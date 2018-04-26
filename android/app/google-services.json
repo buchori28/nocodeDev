@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "216371056557",
+    "firebase_url": "https://nocode-dev.firebaseio.com",
+    "project_id": "nocode-dev",
+    "storage_bucket": "nocode-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216371056557:android:98a4b47474bafd78",
+        "android_client_info": {
+          "package_name": "id.nocodedeveloper.nocodedev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "216371056557-qbtadur8u09fv7tjgdb3v0csv7aofqst.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.nocodedeveloper.nocodedev",
+            "certificate_hash": "0fb6eee115a47fcb99f16d909904d256cc1af3e3"
+          }
+        },
+        {
+          "client_id": "216371056557-nv8d39mr7dtkcbug2t2jl4vgcgukql0v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBse7_-2xCHXWA1Nc4f-OuCrh2zKRRTiU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "216371056557-8e31tpf0ol4osk0ukfg2v66o4qvav5dt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "id.nocodedeveloper.nocodev"
+              }
+            },
+            {
+              "client_id": "216371056557-nv8d39mr7dtkcbug2t2jl4vgcgukql0v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

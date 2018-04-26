@@ -21,7 +21,9 @@ import AboutScreen from './about/about';
 import ChatScreen from './chat/chat';
 import FriendsScreen from './friends/friends';
 import GalleryScreen from './gallery/gallery';
+import MapsScreen from './maps/maps';
 
+// Tabs Navigation
 export const TabsNavigation = TabNavigator({
   Home: { screen: HomeScreen },
   Profile: { screen: ProfileScreen },
@@ -61,7 +63,8 @@ export const Stack = StackNavigator({
   Chat: { screen: ChatScreen },
   Friends: { screen: FriendsScreen },
   Gallery: { screen: GalleryScreen },
-}, {
+  Maps: { screen: MapsScreen },
+  }, {
   initialRouteName: 'Home',
 })
 
@@ -70,4 +73,5 @@ export const Drawer = DrawerNavigator({
   Chat: { screen: ChatScreen },
   Friends: { screen: FriendsScreen },
   Gallery: { screen: GalleryScreen },
+  Maps: { screen: MapsScreen },
 })

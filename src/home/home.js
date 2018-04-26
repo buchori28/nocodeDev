@@ -23,7 +23,7 @@ class HomeScreen extends Component {
       { name: 'Gallery', color: '#55C6FF', icon:'ios-images', screen: 'Gallery' },
       { name: 'News', color: '#FFE16C', icon:'ios-paper', screen: 'News' }, 
       { name: 'Events', color: '#FF8E32', icon:'ios-bookmarks', screen: 'Events' }, 
-      { name: 'Locations', color: '#4DB235', icon:'ios-map', screen: 'Locations' }, 
+      { name: 'Maps', color: '#4DB235', icon:'ios-map', screen: 'Maps' }, 
     ];
 
     const itemshm = [
@@ -51,7 +51,10 @@ class HomeScreen extends Component {
               activeDot={<View style={{backgroundColor: '#fff', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
               paginationStyle={{
                 bottom: 10,
-              }} loop autoplay>
+              }} 
+              loop 
+              autoplay
+              autoplayTimeout={4}>
                 {/*
                 <View>
                   {
