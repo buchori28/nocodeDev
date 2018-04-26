@@ -3,7 +3,9 @@ import {
   View,
   Text,
   StyleSheet,
-} from 'react-native'
+} from 'react-native';
+
+import LottieView from 'lottie-react-native';
 
 class AboutScreen extends Component {
 
@@ -11,11 +13,20 @@ class AboutScreen extends Component {
     title: 'About',
   })
 
+  componentDidMount() {
+    this.animation.play();
+    // Or set a specific startFrame and endFrame with:
+    this.animation.play(1, 60);
+  }
+
   render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>I'm About Page</Text>
-      </View>
+      <LottieView
+        ref={animation => {
+          this.animation = animation;
+        }}
+        source={require('../../assets/animation/checked.json')}
+      />
       )
   }
 }
