@@ -9,6 +9,7 @@ import {
   View,
   RefreshControl,
 } from 'react-native';
+import { BG_MUSIC } from '../url/img_path';
 
 const HEADER_MAX_HEIGHT = 250;
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 73;
@@ -126,7 +127,7 @@ class ProfileScreen extends Component {
                 transform: [{ translateY: imageTranslate }],
               },
             ]}
-            source={require('../../assets/images/coffee1.png')}
+            source={BG_MUSIC}
           />
         </Animated.View>
         <Animated.View

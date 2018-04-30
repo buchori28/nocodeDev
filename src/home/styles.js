@@ -15,6 +15,13 @@ export default {
         color: Platform.OS === 'ios' ? '#000' : '#FFF',
     },
 
+    banner: {
+      resizeMode: "cover",
+      height: deviceHeight / 3.5,
+      width: null,
+      position: "relative",
+    },
+
     gridView : {
         paddingTop: 15,
         flex: 1,

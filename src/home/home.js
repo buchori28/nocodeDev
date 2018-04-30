@@ -7,13 +7,64 @@ import GridView from 'react-native-super-grid';
 import Swiper from 'react-native-swiper';
 
 import styles from './styles';
-
-const slide1 = require("../../assets/images/coffee2.png");
-const slide2 = require("../../assets/images/coffee3.png");
-const slide3 = require("../../assets/images/coffee4.png");
+import { SERVER_KEY, CLIENT_KEY, URL_T_BANNER } from "../url/url";
 
 class HomeScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state =
+    { 
+      dataBanner: [],
+    }
+  }
 
+
+  componentDidMount() {
+    this.getBanner();
+  }
+
+
+  //Function to get all banner from API
+  getBanner = () => {
+    var sendData = {
+      server_key : SERVER_KEY,
+      client_key : CLIENT_KEY,
+    };
+    var headers = {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    };
+    fetch(URL_T_BANNER, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(sendData)
+    }).then(res => res.json()).then(res => {
+      resBanner= res['data'];
+      this.setState({
+        dataBanner: [...this.state.dataBanner, ...res.data],
+        error: res.error || null,
+      });
+    })
+    .catch(error => { 
+      //console.warn("error:"+error);
+    });
+  };
+
+
+  //Function to render data of banner from json into component
+  renderBanner = () => {
+    // Navigator
+    const { navigate } = this.props.navigation;
+    return this.state.dataBanner.map((item) => {
+      return (        
+        <TouchableWithoutFeedback onPress={() => navigate('BannerDetail', {id: item.banner_id, name : item.title})} key={item.banner_id} >
+          <View>
+            <Image style={styles.banner} source={{ uri: item.image }} />
+          </View>
+        </TouchableWithoutFeedback>
+      )
+    });
+  };
  
   render() {
     const { navigate } = this.props.navigation;
@@ -27,10 +78,13 @@ class HomeScreen extends Component {
     ];
 
     const itemshm = [
-      { id: '1', name: 'Github', color: '#1abc9c', image: require("../../assets/images/motocycle.png"), screen: 'Github' }, 
-      { id: '2', name: 'JavaScript', color: '#1abc9c', image: require("../../assets/images/car.png"), screen: 'JavaScript' }, 
-      { id: '3', name: 'HTML', color: '#2ecc71', image: require("../../assets/images/big.png"), screen: 'HTML' },
-      { id: '4', name: 'Angular', color: '#3498db', image: require("../../assets/images/industrial.png"), screen: 'Angular' }, 
+      { id: '1', name: 'Temp One', image: require("../../assets/temp/temp1.png"), screen: 'Featured' }, 
+      { id: '2', name: 'Temp Two', image: require("../../assets/temp/temp2.png"), screen: 'Featured' }, 
+      { id: '3', name: 'Temp Three', image: require("../../assets/temp/temp3.png"), screen: 'Featured' },
+      { id: '4', name: 'Temp Four', image: require("../../assets/temp/temp4.png"), screen: 'Featured' }, 
+      { id: '2', name: 'Temp Five', image: require("../../assets/temp/temp5.png"), screen: 'Featured' }, 
+      { id: '3', name: 'Temp Six', image: require("../../assets/temp/temp6.png"), screen: 'Featured' },
+      { id: '4', name: 'Temp Seven', image: require("../../assets/temp/temp7.png"), screen: 'Featured' }, 
       ];
 
     return (
@@ -47,37 +101,15 @@ class HomeScreen extends Component {
         <Content>     
           <View>
             <Swiper height={160}
+              style={{backgroundColor : "#FFF"}}
               dot={<View style={{backgroundColor: 'rgba(0,0,0,.2)', width: 5, height: 5, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
               activeDot={<View style={{backgroundColor: '#fff', width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}} />}
               paginationStyle={{
                 bottom: 10,
               }} 
               loop 
-              autoplay
-              autoplayTimeout={4}>
-                {/*
-                <View>
-                  {
-                  this.renderBanner()
-                  }
-                </View>
-                */}
-                <TouchableWithoutFeedback onPress={() => navigate('BannerDetail', {image: slide1, name: 'Promo Merah'})}>
-                <View>
-                  <Image source={slide1} />
-                </View>
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback onPress={() => navigate('BannerDetail', {image: slide2, name: 'Promo Biru'})}>
-                <View>
-                  <Image source={slide2}/>
-                </View>
-                </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback onPress={() => navigate('BannerDetail', {image: slide2, name: 'Promo Biru'})}>
-                <View>
-                  <Image source={slide3}/>
-                </View>
-                </TouchableWithoutFeedback>
-
+              autoplay>
+              {this.renderBanner()}
           </Swiper>
         </View>
           <GridView

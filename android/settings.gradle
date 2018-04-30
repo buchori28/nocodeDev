@@ -12,4 +12,7 @@ project(':react-native-maps').projectDir = new File(rootProject.projectDir, '../
 //Lottie
 include ':lottie-react-native'
 project(':lottie-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/lottie-react-native/src/android')
+//Realm
+
+
 include ':app'
